@@ -28,8 +28,7 @@ public:
 /**
  * @brief Concrete product A.
  */
-class ConcreteProductA
- : public Product
+class ConcreteProductA : public Product
 {
 public:
     ConcreteProductA() = default;
@@ -49,8 +48,7 @@ public:
 /**
  * @brief Concrete product B.
  */
-class ConcreteProductB
- : public Product
+class ConcreteProductB : public Product
 {
 public:
     ConcreteProductB() = default;
@@ -68,7 +66,33 @@ public:
 };
 
 /**
- * @brief Creator interface that declares the factory method.
+ * @brief Concrete product C.
+ */
+class ConcreteProductC : public Product
+{
+public:
+    ConcreteProductC() = default;
+    ~ConcreteProductC() override = default;
+
+    std::string GetName() const override
+    {
+        return "ConcreteProductC";
+    }
+
+    void Use() const override
+    {
+        std::cout << "Using " << GetName() << "\n";
+    }
+};
+
+/**
+ * @brief Abstract base class that declares the factory method.
+ *
+ * This class is an abstract base (not a pure interface) because it
+ * provides a concrete helper `CreateObjectAndUse()` while requiring
+ * derived classes to implement the pure-virtual `FactoryMethod()`.
+ * The helper demonstrates how the factory method is used by the base
+ * class to obtain and use products without depending on concrete types.
  */
 class Creator
 {
@@ -83,7 +107,7 @@ public:
     /**
      * @brief Example operation that uses the product created by the factory method.
      */
-    void SomeOperation() const
+    void CreateObjectAndUse() const
     {
         auto product = FactoryMethod();
         product->Use();
@@ -93,8 +117,7 @@ public:
 /**
  * @brief Concrete creator that returns ConcreteProductA.
  */
-class ConcreteCreatorA
- : public Creator
+class ConcreteCreatorA : public Creator
 {
 public:
     std::unique_ptr<Product> FactoryMethod() const override
@@ -106,8 +129,7 @@ public:
 /**
  * @brief Concrete creator that returns ConcreteProductB.
  */
-class ConcreteCreatorB
- : public Creator
+class ConcreteCreatorB : public Creator
 {
 public:
     std::unique_ptr<Product> FactoryMethod() const override
@@ -117,31 +139,15 @@ public:
 };
 
 /**
- * @brief Demo helper that shows Factory Method usage.
- *
- * This demo shows both:
- * - using the creator's `SomeOperation()` which calls `FactoryMethod()` internally,
- * - and calling `FactoryMethod()` directly to obtain a product.
+ * @brief Concrete creator that returns ConcreteProductC.
  */
-inline void DemoFactoryMethod()
+class ConcreteCreatorC : public Creator
 {
-    std::cout << "Factory Method demo:\n";
-
-    ConcreteCreatorA creatorA;
-    std::cout << "- CreatorA.SomeOperation() (uses FactoryMethod internally):\n";
-    creatorA.SomeOperation();
-
-    std::cout << "- CreatorA.FactoryMethod() used directly:\n";
-    auto productA = creatorA.FactoryMethod();
-    productA->Use();
-
-    ConcreteCreatorB creatorB;
-    std::cout << "- CreatorB.SomeOperation() (uses FactoryMethod internally):\n";
-    creatorB.SomeOperation();
-
-    std::cout << "- CreatorB.FactoryMethod() used directly:\n";
-    auto productB = creatorB.FactoryMethod();
-    productB->Use();
-}
+public:
+    std::unique_ptr<Product> FactoryMethod() const override
+    {
+        return std::make_unique<ConcreteProductC>();
+    }
+};
 
 } /* namespace Creational */
