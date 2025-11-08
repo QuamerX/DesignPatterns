@@ -137,7 +137,7 @@ public:
          *
          * @return Constructed Sandwich.
          */
-        Sandwich Build()
+        Sandwich Build() const
         {
             // No exceptions expected here; warn about an unusually plain sandwich
             if (_meat == "None" && _veggies.empty())
