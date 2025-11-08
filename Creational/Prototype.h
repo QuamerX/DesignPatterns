@@ -55,10 +55,6 @@ namespace Creational
             : name_(std::move(name)), allocateSize_(allocateSize)
         {
             array_ = std::make_unique<uint8_t[]>(allocateSize_);
-            for (uint8_t i = 0; i < allocateSize_; i++)
-            {
-                array_[i] = i;
-            }
         }
 
         /* Rule of Five */
@@ -82,6 +78,17 @@ namespace Creational
             std::copy(array_.get(), array_.get() + allocateSize_, cloned_character->array_.get());
             return cloned_character;
         }
+
+        /**
+		 * @brief Fills allocated array with random values.
+         */
+        void FillArray()
+        {
+            for (uint8_t i = 0; i < allocateSize_; i++)
+            {
+                array_[i] = rand();
+            }
+		}
 
         /**
          * @brief Output the character's description and array contents.

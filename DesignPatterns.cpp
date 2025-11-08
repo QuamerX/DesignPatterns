@@ -79,15 +79,19 @@ void DemoPrototype()
 	std::cout << "Design Patterns - Creational: Prototype demo\n";
 	GameCharacter character("Jamie", 5);
 	character.Describe();
-	std::unique_ptr<Prototype> characterClone = character.Clone();
-	characterClone->Describe();
+	character.FillArray();
+	character.Describe();
+	std::unique_ptr<Prototype> characterClone1 = character.Clone();
+	characterClone1->Describe();
 	character.SetName("Jack");
 	character.UpdateArray(0, 99);
 	character.UpdateArray(1, 100);
 	character.UpdateArray(2, 101);
 	character.UpdateArray(3, 102);
 	character.Describe();
-	characterClone->Describe();
+	characterClone1->Describe();
+	std::unique_ptr<Prototype> characterClone2 = character.Clone();
+	characterClone2->Describe();
 	std::cout << "--------------------------------------------\n";
 }
 
