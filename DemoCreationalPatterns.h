@@ -1,4 +1,4 @@
-#include <iostream>
+#pragma once
 #include "Creational/Singleton.h"
 #include "Creational/FactoryMethod.h"
 #include "Creational/AbstractFactory.h"
@@ -51,7 +51,7 @@ void DemoAbstractFactory()
 	std::cout << "--------------------------------------------\n";
 }
 
-void DemoBuilder() 
+void DemoBuilder()
 {
 	std::cout << "Design Patterns - Creational: Builder demo\n";
 	Sandwich lunchSub = Sandwich::Create()
@@ -102,10 +102,4 @@ void DemoCreationalPatterns()
 	DemoAbstractFactory();
 	DemoBuilder();
 	DemoPrototype();
-}
-
-int main()
-{
-	DemoCreationalPatterns();
-	return 0;
 }
