@@ -4,6 +4,9 @@
 #include "Structural/Bridge.h"
 #include "Structural/Composite.h"
 #include "Structural/Decorator.h"
+#include "Structural/Facade.h"
+#include "Structural/Flyweight.h"
+#include "Structural/Proxy.h"
 
 using namespace Structural;
 
@@ -66,10 +69,47 @@ void DemoDecorator()
 	std::cout << "------------------------------------------------------\n";
 }
 
+void DemoFacade()
+{
+	std::cout << "Design Patterns - Structural: Facade demo\n";
+	FileDownloaderFacade fileDownloader;
+	fileDownloader.Download("http://example.com/resource", "localfile.txt");
+	std::cout << "------------------------------------------------------\n";
+}
+
+void DemoFlyweight()
+{
+	std::cout << "Design Patterns - Structural: Flyweight demo\n";
+	MonsterFactory monsterFactory;
+	std::vector<Monster> monsters;
+	for (int i = 0; i < 5; ++i)
+	{
+		auto goblinType = monsterFactory.GetType("Goblin", "GreenTexture", 100);
+		monsters.emplace_back(i * 10, i * 15, goblinType);
+	}
+	for (const auto& monster : monsters)
+	{
+		monster.Draw();
+	}
+	std::cout << "------------------------------------------------------\n";
+}
+
+void DemoProxy()
+{
+	std::cout << "Design Patterns - Structural: Proxy demo\n";
+	ServiceProxy proxyWithoutAccess(false);
+	proxyWithoutAccess.performAction();
+	ServiceProxy proxyWithAccess(true);
+	proxyWithAccess.performAction();
+	std::cout << "------------------------------------------------------\n";
+}
+
 void DemoStructuralPatterns()
 {
 	DemoAdapter();
 	DemoBridge();
 	DemoComposite();
 	DemoDecorator();
+	DemoFacade();
+	DemoFlyweight();
 }
