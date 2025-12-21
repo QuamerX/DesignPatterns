@@ -7,5 +7,6 @@ int main()
 {
 	DemoCreationalPatterns();
 	DemoStructuralPatterns();
+	DemoBehavioralPatterns();
 	return 0;
 }
