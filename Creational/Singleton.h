@@ -66,6 +66,20 @@ namespace Creational
 		 * Prevents assigning one `Singleton` to another; also a compile-time error.
 		 */
 		Singleton& operator=(const Singleton&) = delete;
+
+		/**
+		 * @brief Deleted move constructor
+		 *
+		 * Prevents moving one `Singleton` to another; also a compile-time error.
+		 */
+		Singleton(Singleton&&) = delete;
+
+		/**
+		 * @brief Deleted move assignment operator.
+		 *
+		 * Prevents moving one `Singleton` to another; also a compile-time error.
+		 */
+		Singleton& operator=(Singleton&&) = delete;
 	};
 
 } /* namespace Creational */
