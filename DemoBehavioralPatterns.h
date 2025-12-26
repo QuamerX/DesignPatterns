@@ -6,6 +6,9 @@
 #include "Behavioral/Observer.h"
 #include "Behavioral/Memento.h"
 #include "Behavioral/State.h"
+#include "Behavioral/Strategy.h"
+#include "Behavioral/TemplateMethod.h"
+#include "Behavioral/Visitor.h"
 
 using namespace Behavioral;
 
@@ -109,6 +112,42 @@ void DemoState()
 	std::cout << "--------------------------------------------\n";
 }
 
+void DemoStrategy()
+{
+	std::cout << "Design Patterns - Behavioral: Strategy Pattern demo\n";
+	std::vector<int> data1 = { 5, 3, 8, 1, 2 };
+	std::vector<int> data2 = { 5, 3, 8, 1, 2 };
+	BubbleSort bubble;
+	QuickSort quick;
+	Sorter sorter;
+	sorter.setStrategy(&bubble);
+	sorter.sort(data1);
+	sorter.setStrategy(&quick);
+	sorter.sort(data2);
+	std::cout << "\n--------------------------------------------\n";
+}
+
+void DemoTemplateMethod()
+{
+	std::cout << "Design Patterns - Behavioral: Template Method Pattern demo\n";
+	CSVProcessor csvProcessor;
+	JSONProcessor jsonProcessor;
+	csvProcessor.process();
+	jsonProcessor.process();
+	std::cout << "--------------------------------------------\n";
+}
+
+void DemoVisitor()
+{
+	std::cout << "Design Patterns - Behavioral: Visitor Pattern demo\n";
+	_Circle c;
+	Rectangle r;
+	AreaCalculator area;
+	c.Accept(area);
+	r.Accept(area);
+	std::cout << "--------------------------------------------\n";
+}
+
 void DemoBehavioralPatterns()
 {
 	DemoChainOfResponsibility();
@@ -118,4 +157,7 @@ void DemoBehavioralPatterns()
 	DemoObserver();
 	DemoMemento();
 	DemoState();
+	DemoStrategy();
+	DemoTemplateMethod();
+	DemoVisitor();
 }
