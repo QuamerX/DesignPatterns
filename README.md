@@ -95,47 +95,42 @@ Promotes decoupling between senders and receivers (e.g., event propagation or lo
 Encapsulates a **request as an object**, allowing you to parameterize, queue, or undo operations.
 Common in GUI systems or transaction mechanisms.
 
-### **15. Interpreter**
-
-Defines a **grammar** and uses objects to interpret sentences in that grammar.
-Useful for implementing simple scripting languages, rules, or expression evaluators.
-
-### **16. Iterator**
+### **15. Iterator**
 
 Provides a **standard way to traverse elements** of a collection without exposing its internal structure.
 Separates iteration logic from collection logic.
 
-### **17. Mediator**
+### **16. Mediator**
 
 Defines an object that **coordinates communication** between other objects.
 Reduces direct dependencies and promotes loose coupling (e.g., chat rooms or UI dialogs).
 
-### **18. Memento**
+### **17. Memento**
 
 Captures and restores an object’s **internal state** without violating encapsulation.
 Used for undo/redo mechanisms.
 
-### **19. Observer**
+### **18. Observer**
 
 Defines a **one-to-many relationship** between objects so when one changes state, all dependents are notified.
 Used in event systems and UI frameworks (e.g., data binding).
 
-### **20. State**
+### **19. State**
 
 Allows an object to **change its behavior when its internal state changes**.
 Used in finite state machines or mode-based systems.
 
-### **21. Strategy**
+### **20. Strategy**
 
 Defines a **family of algorithms** encapsulated as interchangeable objects.
 Lets you switch algorithms at runtime (e.g., sorting strategies, compression types).
 
-### **22. Template Method**
+### **21. Template Method**
 
 Defines the **skeleton of an algorithm** in a base class, allowing subclasses to override certain steps.
 Used to enforce structure while enabling customization.
 
-### **23. Visitor**
+### **22. Visitor**
 
 Separates **algorithms from the objects** on which they operate.
 Allows adding new operations to existing object structures without modifying them.
